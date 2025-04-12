@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python in HTML</title>
+</head>
+<body>
+    <form action="/process" method="post">
+        <input type="text" name="data" placeholder="Enter date yyyymmdd" id="input" required>
+        <!-- <input type="submit" value="Submit"> -->
+        <button onclick="sendData()">Submit</button>
+    </form>
+</body>
+<script>
+    function sendData() {
+        const data = document.getElementById("input").value;
+
+        fetch('/process', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'data=' + encodeURIComponent(data)
+        })
+    }
+</script>
+</html>
